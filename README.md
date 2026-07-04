@@ -51,7 +51,16 @@ python3 -m http.server -d docs 8000
 
 ## 公開 (GitHub Pages)
 
-リポジトリの Settings → Pages → Source を `main` ブランチの `/docs` に設定。
+リポジトリ名は `wc2026-squad-power`(ローカルのフォルダ名と一致していなくてOK)。
+
+```sh
+# github.com で wc2026-squad-power リポジトリ(Public)を作成してから:
+git remote add origin git@github.com:jojonki/wc2026-squad-power.git
+git push -u origin main
+```
+
+その後、リポジトリの Settings → Pages → Source を `main` ブランチの `/docs` に設定。
+公開URLは `https://jojonki.github.io/wc2026-squad-power/` になります。
 
 ## データ出典
 
