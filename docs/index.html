@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>W杯2026 スカッドスカウター — 個の総合力で見る48カ国</title>
+<meta name="description" content="2026 FIFAワールドカップ全48カ国・1248選手の所属クラブ/リーグの強さから、各国の「個のレベル」を数値化して比較するビジュアルアプリ。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="title">
+      <h1>⚽ W杯2026 スカッドスカウター</h1>
+      <p>全48カ国・1,248選手の所属クラブ/リーグの強さから「個のレベル」を数値化</p>
+    </div>
+    <button id="themeToggle" title="テーマ切替">🌓</button>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-view="ranking" class="active">総合ランキング</button>
+    <button data-view="scatter">質 × 層の厚さ</button>
+    <button data-view="groups">グループ別</button>
+    <button data-view="leagues">リーグ分析</button>
+    <button data-view="method">算出方法</button>
+  </nav>
+
+  <div class="filters" id="filterRow">
+    <span class="label">大陸連盟:</span>
+    <span id="confChips"></span>
+    <span class="label" style="margin-left:8px">並び順:</span>
+    <select class="sorter" id="sorter">
+      <option value="overall">総合スコア</option>
+      <option value="best11">ベストXI</option>
+      <option value="bench">控え層</option>
+      <option value="avgAge">平均年齢(若い順)</option>
+    </select>
+  </div>
+
+  <main id="views">
+    <section id="view-ranking"></section>
+    <section id="view-scatter" class="hidden"></section>
+    <section id="view-groups" class="hidden"></section>
+    <section id="view-leagues" class="hidden"></section>
+    <section id="view-method" class="hidden"></section>
+  </main>
+
+  <footer class="site">
+    データ: <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_squads" target="_blank" rel="noopener">Wikipedia — 2026 FIFA World Cup squads</a>(2026年6月の最終登録メンバー)。
+    スコアは所属クラブ・リーグ強度に基づく独自の推定値であり、公式レーティングではありません。
+  </footer>
+</div>
+
+<dialog id="teamModal"><div class="modal-inner" id="modalInner"></div></dialog>
+<div id="tooltip"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
