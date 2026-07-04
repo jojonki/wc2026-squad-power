@@ -72,14 +72,14 @@ def main():
         if m and team is not None:
             p = parse_template_params(m.group(1))
             birth = re.search(
-                r"birth date and age2\|df=y\|\d+\|\d+\|\d+\|(\d+)\|(\d+)\|(\d+)",
+                r"birth date and age2\|(?:df=y\|)?"
+                r"(\d+)\|(\d+)\|(\d+)\|(\d+)\|(\d+)\|(\d+)",
                 p.get("age", ""),
             )
             age = None
             if birth:
-                by, bm, bd = map(int, birth.groups())
-                # age as of tournament start 2026-06-11
-                age = 2026 - by - ((6, 11) < (bm, bd))
+                ay, am, ad, by, bm, bd = map(int, birth.groups())
+                age = ay - by - ((am, ad) < (bm, bd))
             team["players"].append(
                 {
                     "no": int(p["no"]) if p.get("no", "").isdigit() else None,

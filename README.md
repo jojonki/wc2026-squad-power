@@ -5,7 +5,8 @@
 
 - **総合ランキング** — 大陸連盟の色分きバーで48カ国を一望
 - **質 × 層の厚さ** — ベストXIスコア × 控え層スコアの散布図(国旗がマーカー)
-- **グループ別** — A〜Lの12グループ、「死の組」判定つき
+- **グループリーグ** — A〜Lの順位表と全72試合の結果、「死の組」判定・戦力予想とのギャップ表示つき
+- **決勝トーナメント** — ラウンド32〜決勝のブラケット。番狂わせ 💥 マークつき。結果が出しだい手動更新
 - **リーグ分析** — W杯選手の供給源リーグとリーグ強度
 - **チーム詳細** — 各国26人全員のクラブ・リーグ・スコア内訳
 
@@ -28,10 +29,27 @@
 data/
   squads.json    # パース済みスカッドデータ(48チーム×26人)
   ratings.json   # リーグ基準値・2部補正・クラブ個別レーティング(手動キュレーション)
+  results.json   # 試合結果(グループ順位表・全試合・決勝Tブラケット)← 手動更新するのはここ
 scripts/
-  parse_squads.py  # Wikipedia のwikitextから squads.json を生成
-  build_data.py    # squads + ratings を結合して docs/data.js を生成
+  parse_squads.py   # Wikipedia のwikitextから squads.json を生成
+  parse_results.py  # Wikipedia のwikitextから results.json を初期生成(ブートストラップ用)
+  build_data.py     # squads + ratings + results を結合して docs/data.js を生成
 docs/            # GitHub Pages 公開ディレクトリ(静的サイト本体)
+```
+
+## 試合結果の更新(決勝トーナメント進行中の手動運用)
+
+決勝Tの結果が出たら `data/results.json` の `knockout` にある該当試合に
+**`s1` / `s2`(90分+延長後のスコア)を記入するだけ**。PK戦にもつれた場合は
+`p1` / `p2` にPKスコアも記入する(`aet: true` は延長の表示用、任意)。
+
+- 準々決勝以降の `t1` / `t2` は `null` のままでOK — サイト側が前ラウンドの勝者から自動で埋めます
+- 3位決定戦の `t1` / `t2` も同様に準決勝の敗者から自動決定
+- `updated` の日付を更新しておくとブラケット画面の注記に反映されます
+
+```sh
+python3 scripts/build_data.py   # docs/data.js を再生成
+git add -A && git commit -m "update results" && git push
 ```
 
 ## データの更新
@@ -48,6 +66,11 @@ python3 scripts/build_data.py   # 未マッチのクラブ/国があれば警告
 # 3. ローカル確認
 python3 -m http.server -d docs 8000
 ```
+
+`results.json` をWikipediaから作り直したい場合は、`2026 FIFA World Cup Group A`〜`L`・
+`Template:2026 FIFA World Cup group tables`・`2026 FIFA World Cup knockout stage` の
+wikitextを同様に取得して1つのディレクトリに置き、`python3 scripts/parse_results.py <dir>` を実行
+(手動編集分は上書きされるので注意)。
 
 ## 公開 (GitHub Pages)
 

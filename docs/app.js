@@ -146,6 +146,35 @@ function renderScatter() {
   });
 }
 
+/* ---------- match results helpers ---------- */
+const RES = typeof DATA !== "undefined" ? DATA.results : null;
+const teamBy = (name) => DATA.teams.find((x) => x.name === name);
+const SHORT_JA = { "ボスニア・ヘルツェゴビナ": "ボスニア", "コンゴ民主共和国": "コンゴ民主" };
+const shortJa = (t) => SHORT_JA[t.ja] || t.ja;
+// 90分+延長のスコア、同点ならPK戦(p1/p2)で勝者を決める
+function koWinner(m) {
+  if (m.s1 == null || m.s2 == null || !m.t1 || !m.t2) return null;
+  if (m.s1 !== m.s2) return m.s1 > m.s2 ? m.t1 : m.t2;
+  if (m.p1 != null && m.p2 != null && m.p1 !== m.p2) return m.p1 > m.p2 ? m.t1 : m.t2;
+  return null;
+}
+function koLoser(m) {
+  const w = koWinner(m);
+  if (!w) return null;
+  return w === m.t1 ? m.t2 : m.t1;
+}
+function attachTeamHandlers(root) {
+  root.querySelectorAll("[data-team]").forEach((elm) => {
+    const t = teamBy(elm.dataset.team);
+    if (!t) return;
+    elm.addEventListener("click", () => openTeam(t));
+    elm.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTeam(t); } });
+    elm.addEventListener("mouseenter", (e) => showTip(teamTipHtml(t), e));
+    elm.addEventListener("mousemove", moveTip);
+    elm.addEventListener("mouseleave", hideTip);
+  });
+}
+
 /* ---------- groups ---------- */
 function renderGroups() {
   const el = $("#view-groups");
@@ -153,29 +182,144 @@ function renderGroups() {
   DATA.teams.forEach((t) => (groups[t.group] ||= []).push(t));
   const avg = (ts) => ts.reduce((s, t) => s + t.overall, 0) / ts.length;
   const deathGroup = Object.keys(groups).reduce((a, b) => (avg(groups[a]) > avg(groups[b]) ? a : b));
+
   const cards = Object.keys(groups).sort().map((g) => {
-    const ts = groups[g].sort((a, b) => b.overall - a.overall);
-    const rows = ts.map((t) => `
+    const ts = groups[g];
+    const power = [...ts].sort((a, b) => b.overall - a.overall);
+    const gr = RES && RES.groups[g];
+    let body;
+    if (gr) {
+      const rows = gr.standings.map((s, i) => {
+        const t = teamBy(s.team);
+        const powerPos = power.indexOf(t) + 1;
+        const perf = i + 1 < powerPos ? `<span class="perf-up" title="個の力${powerPos}位より上の順位">▲</span>`
+          : i + 1 > powerPos ? `<span class="perf-dn" title="個の力${powerPos}位より下の順位">▼</span>` : "";
+        const gd = s.gf - s.ga;
+        return `<tr class="${s.adv ? "adv" : "out"}" data-team="${esc(t.name)}" tabindex="0" role="button">
+          <td>${i + 1}</td>
+          <td class="tm"><span class="fl">${t.flag}</span> ${esc(shortJa(t))}</td>
+          <td>${s.w}-${s.d}-${s.l}</td>
+          <td>${gd > 0 ? "+" : ""}${gd}</td>
+          <td class="pts">${s.pts}</td>
+          <td>${t.overall}${perf}</td>
+        </tr>`;
+      }).join("");
+      const ms = gr.matches.map((m) => {
+        const a = teamBy(m.t1), b = teamBy(m.t2);
+        return `<div class="gm-row">
+          <span class="d">${esc(m.date)}</span>
+          <span class="h">${esc(shortJa(a))} ${a.flag}</span>
+          <span class="sc">${m.s1}–${m.s2}</span>
+          <span>${b.flag} ${esc(shortJa(b))}</span>
+        </div>`;
+      }).join("");
+      body = `<table class="gs-table">
+        <thead><tr><th>#</th><th class="tm">チーム</th><th>勝分敗</th><th>得失</th><th>Pts</th><th>個の力</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+        <details class="gm"><summary>試合結果(6試合)</summary>${ms}</details>`;
+    } else {
+      body = ts.map((t) => `
       <div class="rank-row" tabindex="0" role="button" data-team="${esc(t.name)}" style="grid-template-columns:2em 1fr 4.5em 2.6em">
         <span class="rk" style="text-align:left">${t.flag}</span>
         <span class="nm" style="font-size:.88rem">${esc(t.ja)}</span>
         <span class="bar-track"><span class="bar" style="width:${t.overall}%;background:${confColor(t.conf)}"></span></span>
         <span class="val">${t.overall}</span>
       </div>`).join("");
-    return `<div class="group-card"><h3>グループ ${g}<small>平均 ${avg(ts).toFixed(1)}点${g === deathGroup ? " ・ 💀 死の組" : ""}</small></h3>${rows}</div>`;
+    }
+    return `<div class="group-card"><h3>グループ ${g}<small>力平均 ${avg(ts).toFixed(1)}点${g === deathGroup ? " ・ 💀 死の組" : ""}</small></h3>${body}</div>`;
   }).join("");
+
   el.innerHTML = `<div class="card" style="background:none;border:none;padding:0">
     <div class="groups-grid">${cards}</div>
-    <div class="card" style="margin-top:14px"><div class="legend" style="border:none;padding:0;margin:0">${CONFS.map((c) => `<span><span class="swatch" style="background:${c.color}"></span>${c.ja}</span>`).join("")}</div></div>
+    <div class="card" style="margin-top:14px"><p class="sub" style="margin:0">
+      左端の緑ライン = 決勝トーナメント進出(各組上位2 + 成績上位の3位8チーム)。
+      「個の力」列の ▲▼ は本アプリの戦力予想と実際の順位のギャップ(▲=予想超え)。行クリックでチーム詳細。
+    </p></div>
   </div>`;
-  el.querySelectorAll(".rank-row").forEach((row) => {
-    const t = DATA.teams.find((x) => x.name === row.dataset.team);
-    row.addEventListener("click", () => openTeam(t));
-    row.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openTeam(t); } });
-    row.addEventListener("mouseenter", (e) => showTip(teamTipHtml(t), e));
-    row.addEventListener("mousemove", moveTip);
-    row.addEventListener("mouseleave", hideTip);
+  attachTeamHandlers(el);
+}
+
+/* ---------- knockout bracket ---------- */
+function renderBracket() {
+  const el = $("#view-bracket");
+  if (!RES) {
+    el.innerHTML = `<div class="card"><h2>決勝トーナメント</h2><p class="sub">試合結果データがまだありません。</p></div>`;
+    return;
+  }
+  const ko = RES.knockout;
+  const rounds = [
+    { id: "r32", label: "ラウンド32" },
+    { id: "r16", label: "ラウンド16" },
+    { id: "qf", label: "準々決勝" },
+    { id: "sf", label: "準決勝" },
+    { id: "final", label: "決勝" },
+  ];
+  // 前ラウンドの勝者を次ラウンドの空きスロットに流し込む
+  const resolved = {};
+  let prev = null;
+  rounds.forEach((r) => {
+    const ms = ko[r.id].map((m) => ({ ...m }));
+    if (prev) ms.forEach((m, i) => {
+      if (!m.t1) m.t1 = koWinner(prev[2 * i]);
+      if (!m.t2) m.t2 = koWinner(prev[2 * i + 1]);
+    });
+    resolved[r.id] = ms;
+    prev = ms;
   });
+  const third = { ...ko.third[0] };
+  if (!third.t1) third.t1 = koLoser(resolved.sf[0]);
+  if (!third.t2) third.t2 = koLoser(resolved.sf[1]);
+
+  const card = (m) => {
+    const done = m.s1 != null && m.s2 != null;
+    const w = koWinner(m);
+    const wt = w && teamBy(w);
+    const lt = w && teamBy(w === m.t1 ? m.t2 : m.t1);
+    const upset = wt && lt && wt.overall < lt.overall - 2;
+    const row = (name, s, p) => {
+      const t = name && teamBy(name);
+      const label = t ? `<span class="fl">${t.flag}</span><span class="nm">${esc(shortJa(t))}</span>` : `<span class="nm tbd">未定</span>`;
+      const sc = done ? `${s}${p != null ? `<small> (${p})</small>` : ""}` : "";
+      const cls = done ? (w === name ? "win" : "lose") : "";
+      return `<div class="ko-team ${cls}" ${t ? `data-team="${esc(t.name)}" tabindex="0" role="button"` : ""}>
+        ${label}${upset && w === name ? "<span title='番狂わせ'>💥</span>" : ""}<span class="sc">${sc}</span>
+      </div>`;
+    };
+    const badge = esc(m.date || "") + (m.p1 != null ? " PK戦" : m.aet ? " 延長" : "");
+    return `<div class="ko-match">
+      <span class="ko-date">${badge}</span>
+      ${row(m.t1, m.s1, m.p1)}
+      ${row(m.t2, m.s2, m.p2)}
+    </div>`;
+  };
+
+  let cells = rounds.map((r, c) =>
+    `<div class="ko-head" style="grid-column:${c + 1};grid-row:1">${r.label}</div>`).join("");
+  cells += `<div class="ko-head" style="grid-column:6;grid-row:1">優勝</div>`;
+  rounds.forEach((r, c) => {
+    const span = 2 ** (c + 1);
+    resolved[r.id].forEach((m, i) => {
+      cells += `<div class="ko-slot c${c}" style="grid-column:${c + 1};grid-row:${2 + i * span} / span ${span}">${card(m)}</div>`;
+    });
+  });
+  const champName = koWinner(resolved.final[0]);
+  const champ = champName && teamBy(champName);
+  cells += `<div class="ko-slot champ" style="grid-column:6;grid-row:2 / span 32">
+    <div class="ko-champ">${champ
+      ? `<span class="cup">🏆</span><span style="font-size:1.3rem">${champ.flag}</span><br><b>${esc(champ.ja)}</b>`
+      : `<span class="cup">🏆</span><span class="tbd" style="color:var(--ink-muted)">7/19 決定</span>`}</div>
+  </div>`;
+
+  el.innerHTML = `<div class="card">
+    <h2>決勝トーナメント</h2>
+    <p class="sub">太字が勝者。同点は延長→PK戦(カッコ内がPKスコア)。💥 = 番狂わせ(「個の力」で下位のチームが勝利)。チーム名クリックで26人の内訳。結果が出しだい更新します(${esc(RES.updated)}時点)。</p>
+    <div class="bracket-scroll"><div class="bracket">${cells}</div></div>
+    <div class="ko-third-box">
+      <h3>3位決定戦 <small>マイアミ</small></h3>
+      <div style="max-width:230px">${card(third)}</div>
+    </div>
+  </div>`;
+  attachTeamHandlers(el);
 }
 
 /* ---------- leagues ---------- */
@@ -304,7 +448,7 @@ function openTeam(t) {
 
 /* ---------- shell ---------- */
 function render() {
-  ["ranking", "scatter", "groups", "leagues", "method"].forEach((v) =>
+  ["ranking", "scatter", "groups", "bracket", "leagues", "method"].forEach((v) =>
     $("#view-" + v).classList.toggle("hidden", state.view !== v));
   $("#filterRow").classList.toggle("hidden", !["ranking", "scatter"].includes(state.view));
   $("#sorter").parentElement.querySelectorAll(".label")[1].classList.toggle("hidden", state.view !== "ranking");
@@ -312,6 +456,7 @@ function render() {
   if (state.view === "ranking") renderRanking();
   if (state.view === "scatter") renderScatter();
   if (state.view === "groups") renderGroups();
+  if (state.view === "bracket") renderBracket();
   if (state.view === "leagues") renderLeagues();
   if (state.view === "method") renderMethod();
 }

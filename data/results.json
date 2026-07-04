@@ -1,0 +1,1340 @@
+{
+ "updated": "2026-07-04",
+ "_howto": "決勝Tの結果が出たら knockout の該当試合に s1/s2(PK戦なら p1/p2 も)を記入して scripts/build_data.py を再実行。qf 以降の t1/t2 は null のままでよい(勝者から自動決定)。",
+ "groups": {
+  "A": {
+   "standings": [
+    {
+     "team": "Mexico",
+     "w": 3,
+     "d": 0,
+     "l": 0,
+     "gf": 6,
+     "ga": 0,
+     "pts": 9,
+     "adv": true
+    },
+    {
+     "team": "South Africa",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 3,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "South Korea",
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "gf": 2,
+     "ga": 3,
+     "pts": 3,
+     "adv": false
+    },
+    {
+     "team": "Czech Republic",
+     "w": 0,
+     "d": 1,
+     "l": 2,
+     "gf": 2,
+     "ga": 6,
+     "pts": 1,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/11",
+     "t1": "Mexico",
+     "s1": 2,
+     "t2": "South Africa",
+     "s2": 0
+    },
+    {
+     "date": "6/11",
+     "t1": "South Korea",
+     "s1": 2,
+     "t2": "Czech Republic",
+     "s2": 1
+    },
+    {
+     "date": "6/18",
+     "t1": "Czech Republic",
+     "s1": 1,
+     "t2": "South Africa",
+     "s2": 1
+    },
+    {
+     "date": "6/18",
+     "t1": "Mexico",
+     "s1": 1,
+     "t2": "South Korea",
+     "s2": 0
+    },
+    {
+     "date": "6/24",
+     "t1": "Czech Republic",
+     "s1": 0,
+     "t2": "Mexico",
+     "s2": 3
+    },
+    {
+     "date": "6/24",
+     "t1": "South Africa",
+     "s1": 1,
+     "t2": "South Korea",
+     "s2": 0
+    }
+   ]
+  },
+  "B": {
+   "standings": [
+    {
+     "team": "Switzerland",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 7,
+     "ga": 3,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Canada",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 8,
+     "ga": 3,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Bosnia and Herzegovina",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 5,
+     "ga": 6,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Qatar",
+     "w": 0,
+     "d": 1,
+     "l": 2,
+     "gf": 2,
+     "ga": 10,
+     "pts": 1,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/12",
+     "t1": "Canada",
+     "s1": 1,
+     "t2": "Bosnia and Herzegovina",
+     "s2": 1
+    },
+    {
+     "date": "6/13",
+     "t1": "Qatar",
+     "s1": 1,
+     "t2": "Switzerland",
+     "s2": 1
+    },
+    {
+     "date": "6/18",
+     "t1": "Switzerland",
+     "s1": 4,
+     "t2": "Bosnia and Herzegovina",
+     "s2": 1
+    },
+    {
+     "date": "6/18",
+     "t1": "Canada",
+     "s1": 6,
+     "t2": "Qatar",
+     "s2": 0
+    },
+    {
+     "date": "6/24",
+     "t1": "Switzerland",
+     "s1": 2,
+     "t2": "Canada",
+     "s2": 1
+    },
+    {
+     "date": "6/24",
+     "t1": "Bosnia and Herzegovina",
+     "s1": 3,
+     "t2": "Qatar",
+     "s2": 1
+    }
+   ]
+  },
+  "C": {
+   "standings": [
+    {
+     "team": "Brazil",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 7,
+     "ga": 1,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Morocco",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 6,
+     "ga": 3,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Scotland",
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "gf": 1,
+     "ga": 4,
+     "pts": 3,
+     "adv": false
+    },
+    {
+     "team": "Haiti",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 2,
+     "ga": 8,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/13",
+     "t1": "Brazil",
+     "s1": 1,
+     "t2": "Morocco",
+     "s2": 1
+    },
+    {
+     "date": "6/13",
+     "t1": "Haiti",
+     "s1": 0,
+     "t2": "Scotland",
+     "s2": 1
+    },
+    {
+     "date": "6/19",
+     "t1": "Scotland",
+     "s1": 0,
+     "t2": "Morocco",
+     "s2": 1
+    },
+    {
+     "date": "6/19",
+     "t1": "Brazil",
+     "s1": 3,
+     "t2": "Haiti",
+     "s2": 0
+    },
+    {
+     "date": "6/24",
+     "t1": "Scotland",
+     "s1": 0,
+     "t2": "Brazil",
+     "s2": 3
+    },
+    {
+     "date": "6/24",
+     "t1": "Morocco",
+     "s1": 4,
+     "t2": "Haiti",
+     "s2": 2
+    }
+   ]
+  },
+  "D": {
+   "standings": [
+    {
+     "team": "United States",
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "gf": 8,
+     "ga": 4,
+     "pts": 6,
+     "adv": true
+    },
+    {
+     "team": "Australia",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 2,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Paraguay",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 4,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Turkey",
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "gf": 3,
+     "ga": 5,
+     "pts": 3,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/12",
+     "t1": "United States",
+     "s1": 4,
+     "t2": "Paraguay",
+     "s2": 1
+    },
+    {
+     "date": "6/13",
+     "t1": "Australia",
+     "s1": 2,
+     "t2": "Turkey",
+     "s2": 0
+    },
+    {
+     "date": "6/19",
+     "t1": "United States",
+     "s1": 2,
+     "t2": "Australia",
+     "s2": 0
+    },
+    {
+     "date": "6/19",
+     "t1": "Turkey",
+     "s1": 0,
+     "t2": "Paraguay",
+     "s2": 1
+    },
+    {
+     "date": "6/25",
+     "t1": "Turkey",
+     "s1": 3,
+     "t2": "United States",
+     "s2": 2
+    },
+    {
+     "date": "6/25",
+     "t1": "Paraguay",
+     "s1": 0,
+     "t2": "Australia",
+     "s2": 0
+    }
+   ]
+  },
+  "E": {
+   "standings": [
+    {
+     "team": "Germany",
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "gf": 10,
+     "ga": 4,
+     "pts": 6,
+     "adv": true
+    },
+    {
+     "team": "Ivory Coast",
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "gf": 4,
+     "ga": 2,
+     "pts": 6,
+     "adv": true
+    },
+    {
+     "team": "Ecuador",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 2,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Curaçao",
+     "w": 0,
+     "d": 1,
+     "l": 2,
+     "gf": 1,
+     "ga": 9,
+     "pts": 1,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/14",
+     "t1": "Germany",
+     "s1": 7,
+     "t2": "Curaçao",
+     "s2": 1
+    },
+    {
+     "date": "6/14",
+     "t1": "Ivory Coast",
+     "s1": 1,
+     "t2": "Ecuador",
+     "s2": 0
+    },
+    {
+     "date": "6/20",
+     "t1": "Germany",
+     "s1": 2,
+     "t2": "Ivory Coast",
+     "s2": 1
+    },
+    {
+     "date": "6/20",
+     "t1": "Ecuador",
+     "s1": 0,
+     "t2": "Curaçao",
+     "s2": 0
+    },
+    {
+     "date": "6/25",
+     "t1": "Curaçao",
+     "s1": 0,
+     "t2": "Ivory Coast",
+     "s2": 2
+    },
+    {
+     "date": "6/25",
+     "t1": "Ecuador",
+     "s1": 2,
+     "t2": "Germany",
+     "s2": 1
+    }
+   ]
+  },
+  "F": {
+   "standings": [
+    {
+     "team": "Netherlands",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 10,
+     "ga": 4,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Japan",
+     "w": 1,
+     "d": 2,
+     "l": 0,
+     "gf": 7,
+     "ga": 3,
+     "pts": 5,
+     "adv": true
+    },
+    {
+     "team": "Sweden",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 7,
+     "ga": 7,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Tunisia",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 2,
+     "ga": 12,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/14",
+     "t1": "Netherlands",
+     "s1": 2,
+     "t2": "Japan",
+     "s2": 2
+    },
+    {
+     "date": "6/14",
+     "t1": "Sweden",
+     "s1": 5,
+     "t2": "Tunisia",
+     "s2": 1
+    },
+    {
+     "date": "6/20",
+     "t1": "Netherlands",
+     "s1": 5,
+     "t2": "Sweden",
+     "s2": 1
+    },
+    {
+     "date": "6/20",
+     "t1": "Tunisia",
+     "s1": 0,
+     "t2": "Japan",
+     "s2": 4
+    },
+    {
+     "date": "6/25",
+     "t1": "Japan",
+     "s1": 1,
+     "t2": "Sweden",
+     "s2": 1
+    },
+    {
+     "date": "6/25",
+     "t1": "Tunisia",
+     "s1": 1,
+     "t2": "Netherlands",
+     "s2": 3
+    }
+   ]
+  },
+  "G": {
+   "standings": [
+    {
+     "team": "Belgium",
+     "w": 1,
+     "d": 2,
+     "l": 0,
+     "gf": 6,
+     "ga": 2,
+     "pts": 5,
+     "adv": true
+    },
+    {
+     "team": "Egypt",
+     "w": 1,
+     "d": 2,
+     "l": 0,
+     "gf": 5,
+     "ga": 3,
+     "pts": 5,
+     "adv": true
+    },
+    {
+     "team": "Iran",
+     "w": 0,
+     "d": 3,
+     "l": 0,
+     "gf": 3,
+     "ga": 3,
+     "pts": 3,
+     "adv": false
+    },
+    {
+     "team": "New Zealand",
+     "w": 0,
+     "d": 1,
+     "l": 2,
+     "gf": 4,
+     "ga": 10,
+     "pts": 1,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/15",
+     "t1": "Belgium",
+     "s1": 1,
+     "t2": "Egypt",
+     "s2": 1
+    },
+    {
+     "date": "6/15",
+     "t1": "Iran",
+     "s1": 2,
+     "t2": "New Zealand",
+     "s2": 2
+    },
+    {
+     "date": "6/21",
+     "t1": "Belgium",
+     "s1": 0,
+     "t2": "Iran",
+     "s2": 0
+    },
+    {
+     "date": "6/21",
+     "t1": "New Zealand",
+     "s1": 1,
+     "t2": "Egypt",
+     "s2": 3
+    },
+    {
+     "date": "6/26",
+     "t1": "Egypt",
+     "s1": 1,
+     "t2": "Iran",
+     "s2": 1
+    },
+    {
+     "date": "6/26",
+     "t1": "New Zealand",
+     "s1": 1,
+     "t2": "Belgium",
+     "s2": 5
+    }
+   ]
+  },
+  "H": {
+   "standings": [
+    {
+     "team": "Spain",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 5,
+     "ga": 0,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Cape Verde",
+     "w": 0,
+     "d": 3,
+     "l": 0,
+     "gf": 2,
+     "ga": 2,
+     "pts": 3,
+     "adv": true
+    },
+    {
+     "team": "Uruguay",
+     "w": 0,
+     "d": 2,
+     "l": 1,
+     "gf": 3,
+     "ga": 4,
+     "pts": 2,
+     "adv": false
+    },
+    {
+     "team": "Saudi Arabia",
+     "w": 0,
+     "d": 2,
+     "l": 1,
+     "gf": 1,
+     "ga": 5,
+     "pts": 2,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/15",
+     "t1": "Spain",
+     "s1": 0,
+     "t2": "Cape Verde",
+     "s2": 0
+    },
+    {
+     "date": "6/15",
+     "t1": "Saudi Arabia",
+     "s1": 1,
+     "t2": "Uruguay",
+     "s2": 1
+    },
+    {
+     "date": "6/21",
+     "t1": "Spain",
+     "s1": 4,
+     "t2": "Saudi Arabia",
+     "s2": 0
+    },
+    {
+     "date": "6/21",
+     "t1": "Uruguay",
+     "s1": 2,
+     "t2": "Cape Verde",
+     "s2": 2
+    },
+    {
+     "date": "6/26",
+     "t1": "Cape Verde",
+     "s1": 0,
+     "t2": "Saudi Arabia",
+     "s2": 0
+    },
+    {
+     "date": "6/26",
+     "t1": "Uruguay",
+     "s1": 0,
+     "t2": "Spain",
+     "s2": 1
+    }
+   ]
+  },
+  "I": {
+   "standings": [
+    {
+     "team": "France",
+     "w": 3,
+     "d": 0,
+     "l": 0,
+     "gf": 10,
+     "ga": 2,
+     "pts": 9,
+     "adv": true
+    },
+    {
+     "team": "Norway",
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "gf": 8,
+     "ga": 7,
+     "pts": 6,
+     "adv": true
+    },
+    {
+     "team": "Senegal",
+     "w": 1,
+     "d": 0,
+     "l": 2,
+     "gf": 8,
+     "ga": 6,
+     "pts": 3,
+     "adv": true
+    },
+    {
+     "team": "Iraq",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 1,
+     "ga": 12,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/16",
+     "t1": "France",
+     "s1": 3,
+     "t2": "Senegal",
+     "s2": 1
+    },
+    {
+     "date": "6/16",
+     "t1": "Iraq",
+     "s1": 1,
+     "t2": "Norway",
+     "s2": 4
+    },
+    {
+     "date": "6/22",
+     "t1": "France",
+     "s1": 3,
+     "t2": "Iraq",
+     "s2": 0
+    },
+    {
+     "date": "6/22",
+     "t1": "Norway",
+     "s1": 3,
+     "t2": "Senegal",
+     "s2": 2
+    },
+    {
+     "date": "6/26",
+     "t1": "Norway",
+     "s1": 1,
+     "t2": "France",
+     "s2": 4
+    },
+    {
+     "date": "6/26",
+     "t1": "Senegal",
+     "s1": 5,
+     "t2": "Iraq",
+     "s2": 0
+    }
+   ]
+  },
+  "J": {
+   "standings": [
+    {
+     "team": "Argentina",
+     "w": 3,
+     "d": 0,
+     "l": 0,
+     "gf": 8,
+     "ga": 1,
+     "pts": 9,
+     "adv": true
+    },
+    {
+     "team": "Austria",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 6,
+     "ga": 6,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Algeria",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 5,
+     "ga": 7,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Jordan",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 3,
+     "ga": 8,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/16",
+     "t1": "Argentina",
+     "s1": 3,
+     "t2": "Algeria",
+     "s2": 0
+    },
+    {
+     "date": "6/16",
+     "t1": "Austria",
+     "s1": 3,
+     "t2": "Jordan",
+     "s2": 1
+    },
+    {
+     "date": "6/22",
+     "t1": "Argentina",
+     "s1": 2,
+     "t2": "Austria",
+     "s2": 0
+    },
+    {
+     "date": "6/22",
+     "t1": "Jordan",
+     "s1": 1,
+     "t2": "Algeria",
+     "s2": 2
+    },
+    {
+     "date": "6/27",
+     "t1": "Algeria",
+     "s1": 3,
+     "t2": "Austria",
+     "s2": 3
+    },
+    {
+     "date": "6/27",
+     "t1": "Jordan",
+     "s1": 1,
+     "t2": "Argentina",
+     "s2": 3
+    }
+   ]
+  },
+  "K": {
+   "standings": [
+    {
+     "team": "Colombia",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 4,
+     "ga": 1,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Portugal",
+     "w": 1,
+     "d": 2,
+     "l": 0,
+     "gf": 6,
+     "ga": 1,
+     "pts": 5,
+     "adv": true
+    },
+    {
+     "team": "DR Congo",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 4,
+     "ga": 3,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Uzbekistan",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 2,
+     "ga": 11,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/17",
+     "t1": "Portugal",
+     "s1": 1,
+     "t2": "DR Congo",
+     "s2": 1
+    },
+    {
+     "date": "6/17",
+     "t1": "Uzbekistan",
+     "s1": 1,
+     "t2": "Colombia",
+     "s2": 3
+    },
+    {
+     "date": "6/23",
+     "t1": "Portugal",
+     "s1": 5,
+     "t2": "Uzbekistan",
+     "s2": 0
+    },
+    {
+     "date": "6/23",
+     "t1": "Colombia",
+     "s1": 1,
+     "t2": "DR Congo",
+     "s2": 0
+    },
+    {
+     "date": "6/27",
+     "t1": "Colombia",
+     "s1": 0,
+     "t2": "Portugal",
+     "s2": 0
+    },
+    {
+     "date": "6/27",
+     "t1": "DR Congo",
+     "s1": 3,
+     "t2": "Uzbekistan",
+     "s2": 1
+    }
+   ]
+  },
+  "L": {
+   "standings": [
+    {
+     "team": "England",
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 6,
+     "ga": 2,
+     "pts": 7,
+     "adv": true
+    },
+    {
+     "team": "Croatia",
+     "w": 2,
+     "d": 0,
+     "l": 1,
+     "gf": 5,
+     "ga": 5,
+     "pts": 6,
+     "adv": true
+    },
+    {
+     "team": "Ghana",
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 2,
+     "pts": 4,
+     "adv": true
+    },
+    {
+     "team": "Panama",
+     "w": 0,
+     "d": 0,
+     "l": 3,
+     "gf": 0,
+     "ga": 4,
+     "pts": 0,
+     "adv": false
+    }
+   ],
+   "matches": [
+    {
+     "date": "6/17",
+     "t1": "England",
+     "s1": 4,
+     "t2": "Croatia",
+     "s2": 2
+    },
+    {
+     "date": "6/17",
+     "t1": "Ghana",
+     "s1": 1,
+     "t2": "Panama",
+     "s2": 0
+    },
+    {
+     "date": "6/23",
+     "t1": "England",
+     "s1": 0,
+     "t2": "Ghana",
+     "s2": 0
+    },
+    {
+     "date": "6/23",
+     "t1": "Panama",
+     "s1": 0,
+     "t2": "Croatia",
+     "s2": 1
+    },
+    {
+     "date": "6/27",
+     "t1": "Panama",
+     "s1": 0,
+     "t2": "England",
+     "s2": 2
+    },
+    {
+     "date": "6/27",
+     "t1": "Croatia",
+     "s1": 2,
+     "t2": "Ghana",
+     "s2": 1
+    }
+   ]
+  }
+ },
+ "knockout": {
+  "r32": [
+   {
+    "date": "6/29",
+    "city": "Foxborough",
+    "t1": "Germany",
+    "s1": 1,
+    "t2": "Paraguay",
+    "s2": 1,
+    "p1": 3,
+    "p2": 4
+   },
+   {
+    "date": "6/30",
+    "city": "East Rutherford",
+    "t1": "France",
+    "s1": 3,
+    "t2": "Sweden",
+    "s2": 0
+   },
+   {
+    "date": "6/28",
+    "city": "Inglewood",
+    "t1": "South Africa",
+    "s1": 0,
+    "t2": "Canada",
+    "s2": 1
+   },
+   {
+    "date": "6/29",
+    "city": "Guadalupe",
+    "t1": "Netherlands",
+    "s1": 1,
+    "t2": "Morocco",
+    "s2": 1,
+    "p1": 2,
+    "p2": 3
+   },
+   {
+    "date": "7/2",
+    "city": "Toronto",
+    "t1": "Portugal",
+    "s1": 2,
+    "t2": "Croatia",
+    "s2": 1
+   },
+   {
+    "date": "7/2",
+    "city": "Inglewood",
+    "t1": "Spain",
+    "s1": 3,
+    "t2": "Austria",
+    "s2": 0
+   },
+   {
+    "date": "7/1",
+    "city": "Santa Clara",
+    "t1": "United States",
+    "s1": 2,
+    "t2": "Bosnia and Herzegovina",
+    "s2": 0
+   },
+   {
+    "date": "7/1",
+    "city": "Seattle",
+    "t1": "Belgium",
+    "s1": 3,
+    "t2": "Senegal",
+    "s2": 2,
+    "aet": true
+   },
+   {
+    "date": "6/29",
+    "city": "Houston",
+    "t1": "Brazil",
+    "s1": 2,
+    "t2": "Japan",
+    "s2": 1
+   },
+   {
+    "date": "6/30",
+    "city": "Arlington",
+    "t1": "Ivory Coast",
+    "s1": 1,
+    "t2": "Norway",
+    "s2": 2
+   },
+   {
+    "date": "6/30",
+    "city": "Mexico City",
+    "t1": "Mexico",
+    "s1": 2,
+    "t2": "Ecuador",
+    "s2": 0
+   },
+   {
+    "date": "7/1",
+    "city": "Atlanta",
+    "t1": "England",
+    "s1": 2,
+    "t2": "DR Congo",
+    "s2": 1
+   },
+   {
+    "date": "7/3",
+    "city": "Miami Gardens",
+    "t1": "Argentina",
+    "s1": 3,
+    "t2": "Cape Verde",
+    "s2": 2,
+    "aet": true
+   },
+   {
+    "date": "7/3",
+    "city": "Arlington",
+    "t1": "Australia",
+    "s1": 1,
+    "t2": "Egypt",
+    "s2": 1,
+    "p1": 2,
+    "p2": 4
+   },
+   {
+    "date": "7/2",
+    "city": "Vancouver",
+    "t1": "Switzerland",
+    "s1": 2,
+    "t2": "Algeria",
+    "s2": 0
+   },
+   {
+    "date": "7/3",
+    "city": "Kansas City",
+    "t1": "Colombia",
+    "s1": 1,
+    "t2": "Ghana",
+    "s2": 0
+   }
+  ],
+  "r16": [
+   {
+    "date": "7/4",
+    "city": "Philadelphia",
+    "t1": "Paraguay",
+    "s1": null,
+    "t2": "France",
+    "s2": null
+   },
+   {
+    "date": "7/4",
+    "city": "Houston",
+    "t1": "Canada",
+    "s1": null,
+    "t2": "Morocco",
+    "s2": null
+   },
+   {
+    "date": "7/6",
+    "city": "Arlington",
+    "t1": "Portugal",
+    "s1": null,
+    "t2": "Spain",
+    "s2": null
+   },
+   {
+    "date": "7/6",
+    "city": "Seattle",
+    "t1": "United States",
+    "s1": null,
+    "t2": "Belgium",
+    "s2": null
+   },
+   {
+    "date": "7/5",
+    "city": "East Rutherford",
+    "t1": "Brazil",
+    "s1": null,
+    "t2": "Norway",
+    "s2": null
+   },
+   {
+    "date": "7/5",
+    "city": "Mexico City",
+    "t1": "Mexico",
+    "s1": null,
+    "t2": "England",
+    "s2": null
+   },
+   {
+    "date": "7/7",
+    "city": "Atlanta",
+    "t1": "Argentina",
+    "s1": null,
+    "t2": "Egypt",
+    "s2": null
+   },
+   {
+    "date": "7/7",
+    "city": "Vancouver",
+    "t1": "Switzerland",
+    "s1": null,
+    "t2": "Colombia",
+    "s2": null
+   }
+  ],
+  "qf": [
+   {
+    "date": "7/9",
+    "city": "Foxborough",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   },
+   {
+    "date": "7/10",
+    "city": "Inglewood",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   },
+   {
+    "date": "7/11",
+    "city": "Miami Gardens",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   },
+   {
+    "date": "7/11",
+    "city": "Kansas City",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   }
+  ],
+  "sf": [
+   {
+    "date": "7/14",
+    "city": "Arlington",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   },
+   {
+    "date": "7/15",
+    "city": "Atlanta",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   }
+  ],
+  "final": [
+   {
+    "date": "7/19",
+    "city": "East Rutherford",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   }
+  ],
+  "third": [
+   {
+    "date": "7/18",
+    "city": "Miami Gardens",
+    "t1": null,
+    "s1": null,
+    "t2": null,
+    "s2": null
+   }
+  ]
+ }
+}

@@ -172,6 +172,23 @@ def main():
     }
 
     payload = {"teams": out_teams, "leagues": league_meta}
+
+    results_path = ROOT / "data" / "results.json"
+    if results_path.exists():
+        results = json.loads(results_path.read_text())
+        results.pop("_howto", None)
+        known = set(NATIONS)
+        used = set()
+        for g in results["groups"].values():
+            used |= {s["team"] for s in g["standings"]}
+            used |= {m["t1"] for m in g["matches"]} | {m["t2"] for m in g["matches"]}
+        for rnd in results["knockout"].values():
+            for m in rnd:
+                used |= {m["t1"], m["t2"]}
+        bad = used - known - {None}
+        if bad:
+            raise SystemExit(f"results.json has unknown team names: {sorted(bad)}")
+        payload["results"] = results
     out = ROOT / "docs" / "data.js"
     out.parent.mkdir(exist_ok=True)
     out.write_text("const DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n")
